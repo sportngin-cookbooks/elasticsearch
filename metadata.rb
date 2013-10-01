@@ -1,9 +1,9 @@
 #-*- encoding : utf-8 -*-
-maintainer       "Teruo Adachi"
-maintainer_email "interu@sonicgarden.jp"
+maintainer       "Ian Ehlert"
+maintainer_email "ian.ehlert@sportngin.com"
 license          "Apache"
 description      "Installs elasticsearch"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
-version          "0.0.1"
+version          "0.1.0"
 
 depends "java"

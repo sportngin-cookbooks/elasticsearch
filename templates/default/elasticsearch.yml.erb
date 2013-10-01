@@ -371,3 +371,9 @@ discovery.zen.ping.unicast.hosts: ["<%= @hosts.join('","') %>"]
 #monitor.jvm.gc.ConcurrentMarkSweep.warn: 10s
 #monitor.jvm.gc.ConcurrentMarkSweep.info: 5s
 #monitor.jvm.gc.ConcurrentMarkSweep.debug: 2s
+
+################################## Basic Auth ################################
+
+http.basic.enabled: <%= (!!node[:elasticsearch][:basic_auth]).to_s %>
+http.basic.user: "<%= node[:elasticsearch][:basic_auth][:user] %>"
+http.basic.password: "<%= node[:elasticsearch][:basic_auth][:password] %>"
