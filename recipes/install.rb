@@ -41,7 +41,7 @@ if !!node[:elasticsearch][:basic_auth]
     group node[:elasticsearch][:user]
   end
 
-  cookbook_file "#{node[:elasticsearch][:path][:plugins]}/elasticsearch-http-basic-1.0.3.jar" do
+  cookbook_file "#{node[:elasticsearch][:path][:plugins]}/elasticsearch-http-basic-1.2.0.jar" do
     source "elasticsearch-http-basic-1.0.3.jar"
     owner node[:elasticsearch][:user]
     group node[:elasticsearch][:user]
@@ -51,7 +51,7 @@ if !!node[:elasticsearch][:basic_auth]
   end
 
   execute "unzip elasticsearch jar" do
-    command "unzip #{node[:elasticsearch][:path][:plugins]}/elasticsearch-http-basic-1.0.3.jar -d #{node[:elasticsearch][:path][:plugins]}/http-basic"
+    command "unzip #{node[:elasticsearch][:path][:plugins]}/elasticsearch-http-basic-1.2.0.jar -d #{node[:elasticsearch][:path][:plugins]}/http-basic"
     user node[:elasticsearch][:user]
     not_if "ls #{node[:elasticsearch][:path][:plugins]}/http-basic"
   end
