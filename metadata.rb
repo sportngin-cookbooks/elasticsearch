@@ -6,7 +6,5 @@ description      "Installs elasticsearch"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.markdown'))
 version          "0.2.0"
 
-depends "opsworks_java::setup"
-
 recipe "elasticsearch::install", "Used during the setup lifecyle event to install the necessary packages and set up elasticsearch"
 recipe "elasticsearch", "Used during the configure lifecycle event to configure elasticsearch for the cluster"
