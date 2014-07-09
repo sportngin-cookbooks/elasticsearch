@@ -42,7 +42,7 @@ if !!node[:elasticsearch][:basic_auth]
   end
 
   cookbook_file "#{node[:elasticsearch][:path][:plugins]}/elasticsearch-http-basic-1.2.0.jar" do
-    source "elasticsearch-http-basic-1.0.3.jar"
+    source "elasticsearch-http-basic-1.2.0.jar"
     owner node[:elasticsearch][:user]
     group node[:elasticsearch][:user]
     mode 0755
