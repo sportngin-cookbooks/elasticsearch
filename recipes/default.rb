@@ -49,7 +49,7 @@ end
 
 # Monitoring by Monit
 template "elasticsearch.monitrc" do
-  path   "/etc/monit.d/elasticsearch.monitrc"
+  path   "/etc/monit/conf.d/elasticsearch.monitrc"
   source "elasticsearch.monitrc.erb"
   owner 'root'
   mode 0755
