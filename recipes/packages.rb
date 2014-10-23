@@ -6,3 +6,7 @@ end
 package 'tree' do
   action :install
 end
+
+package "default-jre" do
+  action :install
+end
