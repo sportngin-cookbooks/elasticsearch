@@ -7,6 +7,6 @@ package 'tree' do
   action :install
 end
 
-package "default-jre" do
+package "openjdk-7-jre" do
   action :install
 end
