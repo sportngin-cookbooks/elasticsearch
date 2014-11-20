@@ -19,6 +19,25 @@ template "elasticsearch-env.sh" do
   mode 0755
 end
 
+# Increase open file and memory limits
+bash "enable user limits" do
+  user 'root'
+
+  code <<-END.gsub(/^\s+/, '')
+    echo 'session    required   pam_limits.so' >> /etc/pam.d/su
+  END
+
+  not_if { ::File.read("/etc/pam.d/su").match(/^session    required   pam_limits\.so/) }
+end
+
+log "increase limits for the elasticsearch user"
+
+file "/etc/security/limits.d/10-elasticsearch.conf" do
+  content <<-END.gsub(/^\s+/, '')
+  #{node.elasticsearch.fetch(:user, "elasticsearch")}     -    nofile    #{node.elasticsearch[:limits][:nofile]}
+  #{node.elasticsearch.fetch(:user, "elasticsearch")}     -    memlock   #{node.elasticsearch[:limits][:memlock]}
+  END
+end
 
 # Init File
 template "elasticsearch.init" do
