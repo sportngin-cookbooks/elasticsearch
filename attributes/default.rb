@@ -1,6 +1,6 @@
 # #-*- encoding : utf-8 -*-
 # === VERSION AND LOCATION
-default.elasticsearch[:version]       = "0.90.3"
+default.elasticsearch[:version]       = "1.3.4"
 default.elasticsearch[:host]          = "http://download.elasticsearch.org"
 default.elasticsearch[:repository]    = "elasticsearch/elasticsearch"
 default.elasticsearch[:filename]      = "elasticsearch-#{node.elasticsearch[:version]}.tar.gz"
@@ -25,8 +25,12 @@ default.elasticsearch[:pid_file]  = [node.elasticsearch[:path][:pids], "elastics
 # You may choose to set it in your node/role configuration instead.
 allocated_memory = "#{(node.memory.total.to_i * 0.6 ).floor / 1024}m"
 default.elasticsearch[:allocated_memory] = allocated_memory
-
+default.elasticsearch[:limits][:memlock] = 'unlimited'
+default.elasticsearch[:limits][:nofile]  = 128 * 1024
 default.elasticsearch[:thread_stack_size] = "256k"
+
+# === CLUSTER
+default.elasticsearch[:cluster][:name] = "#{node.elasticsearch[:cluster_name] || "caplinked-es-dev"}"
 
 # === NODE
 default.elasticsearch[:node][:name]    = "0"
