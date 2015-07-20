@@ -28,5 +28,8 @@ default.elasticsearch[:limits][:memlock] = 'unlimited'
 default.elasticsearch[:limits][:nofile]  = 128 * 1024
 default.elasticsearch[:thread_stack_size] = "256k"
 
+# === CLUSTER
+default.elasticsearch[:cluster][:name] = "#{node.elasticsearch[:cluster_name] || "caplinked-es-dev"}"
+
 # === NODE
 default.elasticsearch[:node][:name]    = "0"
