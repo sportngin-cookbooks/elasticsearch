@@ -17,6 +17,12 @@ provisioner:
           instances:
             es1:
               private_ip: 127.0.0.1
+    elasticsearch:
+      node:
+        name: tacos
+      discovery:
+        zen:
+          minimum_master_nodes: 1
 platforms:
   - name: amazon-2015.09
     driver_plugin: ec2

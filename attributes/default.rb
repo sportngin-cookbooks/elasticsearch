@@ -30,4 +30,9 @@ default.elasticsearch[:allocated_memory] = "#{[half_memory_mb, 30500].min}m"
 default.elasticsearch[:thread_stack_size] = "256k"
 
 # === NODE
-default.elasticsearch[:node][:name]    = "0"
+default.elasticsearch[:node][:name] = nil
+
+default.elasticsearch[:node][:master] = 'true'
+default.elasticsearch[:node][:data] = 'true'
+
+default.elasticsearch[:discovery][:zen][:minimum_master_nodes] = nil # Use default of 1.

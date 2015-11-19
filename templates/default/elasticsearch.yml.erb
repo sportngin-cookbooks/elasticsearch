@@ -38,7 +38,9 @@ cluster.name: elasticsearch
 # from configuring them manually. You can tie this node to a specific name:
 #
 # node.name: "Franz Kafka"
-
+<% if node[:elasticsearch][:node][:name] %>
+node.name: "<%= node[:elasticsearch][:node][:name] %>"
+<% end %>
 
 # Every node can be configured to allow or deny being eligible as the master,
 # and to allow or deny to store the data.
@@ -71,6 +73,8 @@ cluster.name: elasticsearch
 #
 # node.master: false
 # node.data: false
+node.master: <%= node[:elasticsearch][:node][:master] %>
+node.data: <%= node[:elasticsearch][:node][:data] %>
 
 # Use the Cluster Health API [http://localhost:9200/_cluster/health], the
 # Node Info API [http://localhost:9200/_cluster/nodes] or GUI tools
@@ -309,6 +313,9 @@ path.plugins: <%= node[:elasticsearch][:path][:plugins] %>
 # for large clusters (>3 nodes):
 #
 # discovery.zen.minimum_master_nodes: 1
+<% if node[:elasticsearch][:discovery][:zen][:minimum_master_nodes] %>
+discovery.zen.minimum_master_nodes: <%= node[:elasticsearch][:discovery][:zen][:minimum_master_nodes] %>
+<% end %>
 
 # Set the time to wait for ping responses from other nodes when discovering.
 # Set this option to a higher value on a slow or congested network
