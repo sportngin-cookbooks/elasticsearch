@@ -38,7 +38,9 @@ cluster.name: elasticsearch
 # from configuring them manually. You can tie this node to a specific name:
 #
 # node.name: "Franz Kafka"
-
+<% if node[:elasticsearch][:node][:name] %>
+node.name: <%= node[:elasticsearch][:node][:name] %>
+<% end %>
 
 # Every node can be configured to allow or deny being eligible as the master,
 # and to allow or deny to store the data.

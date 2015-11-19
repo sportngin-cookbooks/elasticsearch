@@ -30,7 +30,7 @@ default.elasticsearch[:allocated_memory] = "#{[half_memory_mb, 30500].min}m"
 default.elasticsearch[:thread_stack_size] = "256k"
 
 # === NODE
-default.elasticsearch[:node][:name]    = "0" # TODO: Fix config and init script or remove.
+default.elasticsearch[:node][:name] = nil
 
 default.elasticsearch[:node][:master] = 'true'
 default.elasticsearch[:node][:data] = 'true'
