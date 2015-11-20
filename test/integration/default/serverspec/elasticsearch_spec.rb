@@ -32,8 +32,9 @@ end
 describe file('/data/elasticsearch/config/elasticsearch.yml') do
   it { should be_file }
   its(:content) { should include 'elasticsearch' }
-  its(:content) { should match /^node.name: "tacos"/ }
+  its(:content) { should match /^node.name: "es1"/ }
   its(:content) { should match /^node.master: true/ }
   its(:content) { should match /^node.data: true/ }
   its(:content) { should match /^discovery.zen.minimum_master_nodes: 1/ }
+  its(:content) { should match /^discovery.zen.ping.unicast.hosts: ["10.0.0.1,10.0.0.2"]/ }
 end

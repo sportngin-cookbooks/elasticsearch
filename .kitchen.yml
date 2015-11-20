@@ -16,10 +16,12 @@ provisioner:
         elasticsearch:
           instances:
             es1:
-              private_ip: 127.0.0.1
+              private_ip: 10.0.0.1
+            es2:
+              private_ip: 10.0.0.2
     elasticsearch:
       node:
-        name: tacos
+        name: es1
       discovery:
         zen:
           minimum_master_nodes: 1
