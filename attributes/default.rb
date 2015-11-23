@@ -35,4 +35,9 @@ default.elasticsearch[:node][:name] = nil
 default.elasticsearch[:node][:master] = 'true'
 default.elasticsearch[:node][:data] = 'true'
 
+# === DISCOVERY
 default.elasticsearch[:discovery][:zen][:minimum_master_nodes] = nil # Use default of 1.
+
+instances = node[:opsworks][:layers][:elasticsearch][:instances]
+hosts = instances.map { |name, attrs| attrs['private_ip'] }
+default.elasticsearch[:discovery][:zen][:ping][:unicast][:hosts] = hosts

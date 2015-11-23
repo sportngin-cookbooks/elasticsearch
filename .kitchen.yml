@@ -19,7 +19,7 @@ provisioner:
               private_ip: 127.0.0.1
     elasticsearch:
       node:
-        name: tacos
+        name: es1
       discovery:
         zen:
           minimum_master_nodes: 1
