@@ -36,5 +36,5 @@ describe file('/data/elasticsearch/config/elasticsearch.yml') do
   its(:content) { should match /^node.master: true/ }
   its(:content) { should match /^node.data: true/ }
   its(:content) { should match /^discovery.zen.minimum_master_nodes: 1/ }
-  its(:content) { should match /^discovery.zen.ping.unicast.hosts: \["127.0.0.1","10.0.0.1"\]/ }
+  its(:content) { should match /^discovery.zen.ping.unicast.hosts: \["127.0.0.1"\]/ }
 end

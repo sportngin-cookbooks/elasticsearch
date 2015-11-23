@@ -17,8 +17,6 @@ provisioner:
           instances:
             es1:
               private_ip: 127.0.0.1
-            es2:
-              private_ip: 10.0.0.1
     elasticsearch:
       node:
         name: es1
