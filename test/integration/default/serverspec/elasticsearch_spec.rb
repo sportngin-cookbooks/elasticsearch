@@ -32,6 +32,7 @@ end
 describe file('/data/elasticsearch/config/elasticsearch.yml') do
   it { should be_file }
   its(:content) { should include 'elasticsearch' }
+  its(:content) { should match /^cluster.name: elasticsearch-cluster/ }
   its(:content) { should match /^node.name: "es1"/ }
   its(:content) { should match /^node.master: true/ }
   its(:content) { should match /^node.data: true/ }

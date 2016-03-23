@@ -18,6 +18,8 @@ provisioner:
             es1:
               private_ip: 127.0.0.1
     elasticsearch:
+      cluster:
+        name: elasticsearch-cluster
       node:
         name: es1
       discovery:

@@ -29,6 +29,9 @@ default.elasticsearch[:allocated_memory] = "#{[half_memory_mb, 30500].min}m"
 
 default.elasticsearch[:thread_stack_size] = "256k"
 
+# === CLUSTER
+default.elasticsearch[:cluster][:name] = 'elasticsearch'
+
 # === NODE
 default.elasticsearch[:node][:name] = nil
 
