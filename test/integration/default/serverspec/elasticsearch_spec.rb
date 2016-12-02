@@ -9,6 +9,10 @@ describe service('elasticsearch') do
   it { should be_running }
 end
 
+describe process('bash /etc/init.d/elasticsearch') do
+  it { should_not be_running }
+end
+
 describe command('curl -s localhost:9200') do
   its(:stdout) { should include '"status" : 200,'}
   its(:stdout) { should include '"number" : "1.5.2",'}
