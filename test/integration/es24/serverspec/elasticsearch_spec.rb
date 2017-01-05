@@ -42,4 +42,13 @@ describe file('/data/elasticsearch/config/elasticsearch.yml') do
   its(:content) { should match /^node.data: true/ }
   its(:content) { should match /^discovery.zen.minimum_master_nodes: 1/ }
   its(:content) { should match /^discovery.zen.ping.unicast.hosts: \["127.0.0.1"\]/ }
+  its(:content) { should match /^network.host: 0.0.0.0/ }
+end
+
+describe port(9200) do
+  it { should be_listening.on('0.0.0.0').with('tcp') }
+end
+
+describe port(9300) do
+  it { should be_listening.on('0.0.0.0').with('tcp') }
 end

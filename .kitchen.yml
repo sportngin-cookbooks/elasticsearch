@@ -57,3 +57,5 @@ suites:
     attributes:
       elasticsearch:
         version: "2.4.3"
+        network:
+          host: 0.0.0.0

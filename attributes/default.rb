@@ -38,6 +38,11 @@ default.elasticsearch[:node][:name] = nil
 default.elasticsearch[:node][:master] = 'true'
 default.elasticsearch[:node][:data] = 'true'
 
+# === NETWORK
+default.elasticsearch[:network][:bind_host] = nil
+default.elasticsearch[:network][:publish_host] = nil
+default.elasticsearch[:network][:host] = nil
+
 # === DISCOVERY
 default.elasticsearch[:discovery][:zen][:minimum_master_nodes] = nil # Use default of 1.
 
