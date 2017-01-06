@@ -14,8 +14,8 @@ describe process('bash /etc/init.d/elasticsearch') do
 end
 
 describe command('curl -s localhost:9200') do
-  its(:stdout) { should include '"status" : 200,'}
-  its(:stdout) { should include '"number" : "1.5.2",'}
+  its(:stdout) { should include '"number" : "2.4.3",'}
+  its(:stdout) { should include '"tagline" : "You Know, for Search"'}
 end
 
 describe file('/etc/init.d/elasticsearch') do
@@ -42,6 +42,7 @@ describe file('/data/elasticsearch/config/elasticsearch.yml') do
   its(:content) { should match /^node.data: true/ }
   its(:content) { should match /^discovery.zen.minimum_master_nodes: 1/ }
   its(:content) { should match /^discovery.zen.ping.unicast.hosts: \["127.0.0.1"\]/ }
+  its(:content) { should match /^network.host: 0.0.0.0/ }
 end
 
 describe port(9200) do

@@ -211,15 +211,24 @@ path.plugins: <%= node[:elasticsearch][:path][:plugins] %>
 # Set the bind address specifically (IPv4 or IPv6):
 #
 # network.bind_host: 192.168.0.1
+<% if node[:elasticsearch][:network][:bind_host] %>
+network.bind_host: <%= node[:elasticsearch][:network][:bind_host] %>
+<% end %>
 
 # Set the address other nodes will use to communicate with this node. If not
 # set, it is automatically derived. It must point to an actual IP address.
 #
 # network.publish_host: 192.168.0.1
+<% if node[:elasticsearch][:network][:publish_host] %>
+network.publish_host: <%= node[:elasticsearch][:network][:publish_host] %>
+<% end %>
 
 # Set both 'bind_host' and 'publish_host':
 #
 # network.host: 192.168.0.1
+<% if node[:elasticsearch][:network][:host] %>
+network.host: <%= node[:elasticsearch][:network][:host] %>
+<% end %>
 
 # Set a custom port for the node to node communication (9300 by default):
 #

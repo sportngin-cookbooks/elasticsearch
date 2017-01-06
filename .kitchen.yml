@@ -49,3 +49,13 @@ suites:
       - recipe[elasticsearch::packages]
       - recipe[elasticsearch::default]
     attributes:
+  - name: es24
+    run_list:
+      - recipe[elasticsearch::install]
+      - recipe[elasticsearch::packages]
+      - recipe[elasticsearch::default]
+    attributes:
+      elasticsearch:
+        version: "2.4.3"
+        network:
+          host: 0.0.0.0

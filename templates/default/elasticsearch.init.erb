@@ -10,6 +10,8 @@
 # Source networking configuration
 if [ -f /etc/sysconfig/network ]; then source /etc/sysconfig/network; fi
 
+if [ -f /etc/rc.d/init.d/functions ]; then source /etc/rc.d/init.d/functions; fi
+
 # Exit if networking is not up
 [ "$NETWORKING" = "no" ] && exit
 
@@ -39,27 +41,10 @@ start() {
 
 stop() {
     if [[ -f $PIDFILE ]]; then
-      echo -n -e "\033[1mStopping elasticsearch...\033[0m"
-
-      # REMOVE PIDFILE AND EXIT IF PROCESS NOT RUNNING
-      if [ ! $CHECK_PID_RUNNING ]; then
-        echo -e "\033[1mPID file found, but no matching process running?\033[0m"
-        echo    "Removing PID file..."
-        su <%= node[:elasticsearch][:user] %> -m -c "rm $PIDFILE"
-        exit 0
-      fi
+      echo -e "\033[1mStopping elasticsearch...\033[0m"
 
       # KILL PROCESS
-      su <%= node[:elasticsearch][:user] %> -m -c "kill $(cat $PIDFILE)"
-      r=$?
-      timeout=0
-      while [ -f $PIDFILE  ]; do
-        echo -n '.'
-        (( timeout++ ))
-        if [ $timeout -gt '15' ]; then return; fi
-        sleep 1
-      done; echo
-      return $r
+      killproc -p ${PIDFILE} -d 15 elasticsearch
     else
       echo -e "\033[1mNo PID file found -- elasticsearch not running?\033[0m"
     fi

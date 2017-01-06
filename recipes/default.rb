@@ -1,7 +1,7 @@
 #-*- encoding : utf-8 -*-
 
 # Create Directories
-[ node[:elasticsearch][:path][:conf], node[:elasticsearch][:path][:data], node[:elasticsearch][:path][:logs], node[:elasticsearch][:path][:pids] ].each do |path|
+[ node[:elasticsearch][:path][:conf], node[:elasticsearch][:path][:data], node[:elasticsearch][:path][:logs], node[:elasticsearch][:path][:pids], node[:elasticsearch][:path][:plugins] ].each do |path|
   directory path do
     owner node[:elasticsearch][:user]
     group node[:elasticsearch][:user]
